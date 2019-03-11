@@ -67,6 +67,13 @@ coprocessing.
 
 ## netlink
 
+It's a socket family designed to configure the network in a more elegant fashion. It allows
+communication between userspace processes and kernel processes. It has been created to offer a more
+versatile solution for network configuration and to be an alternative to the traditional method of
+using ioctl calls.
+
+It is (partly) documented in RFC 3549.
+
 ## nstools (v²)
 
 ## otip-vde\_dnsutils (v²)
@@ -91,6 +98,17 @@ coprocessing.
 
 ## umvu (v²)
 
+It's a user mode implementation of VUOS. It is designed to implement a partial virtual machine for
+the process it virtualizes and its offspring. The virtualized process has a virtualized view of its
+environment (in opposition to the global view that processes usually have).
+
+It allows the loading and unloading of various modules for different types of virtualization (of the
+file system, of the devices, etc.).
+
+See:
+
+    vu_insmod, vu_lsmod, vu_rmmod
+
 ## unreal (v²)
 
 ## userbindmount (v²)
@@ -107,11 +125,21 @@ see:
 
 ## vdens (v²)
 
-## vdestack (v²)
-
 ## vde\_plug (v²)
 
+It's a component of VDE. It's an abstraction for the physical network plug. These can be created and
+processes using VDE can attach to them. It allows for the creation of a distributed network.
+
+The network traffic is translated in a simple bidirectional character stream between two plugs.
+
+## vdestack (v²)
+
 ## vde\_switch (v²)
+
+It's a component of VDE. It's an abstraction for the physical switch. It allows for the creation of
+a virtual switch to which processes can connect. It supports many usual switch features (like port
+control, creation of VLANs, network filtering, etc.). The switch is created in a user directory and
+can be managed through the use of an interactive command line prompt.
 
 ## volatilestream (v²)
 
@@ -125,21 +153,41 @@ see:
 
 ## vufuse (v²)
 
+## vu\_insmod (v²)
+
+It allows for the loading of a module to support some type of virtualization. Can be launched from a
+process virtualized by umvu.
+
+For example, suppose you want to virtualize file system mounting. You would use, for example in a
+virtualized istance of xterm, the following command
+
+    vu_insmod vufuse
+
+## vu\_lsmod (v²)
+
+It allows the user of a virtualized process to see which modules have been loaded so far.
+
+See:
+
+    vu_insmod
+
 ## vuname (v²)
 
 ## vunet (v²)
 
 ## VUOS (v²)
 
+## vu\_rmmod (v²)
+
+It allows a user of a virtualized process to unload a previously loaded module.
+
+See:
+
+    vu_insmod
+
 ## vustack (v²)
 
 ## vusu (v²)
-
-## vu\_insmod (v²)
-
-## vu\_lsmod (v²)
-
-## vu\_rmmod (v²)
 
 ## vxvde (v²)
 
