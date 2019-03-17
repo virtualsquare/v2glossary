@@ -16,7 +16,7 @@ Recent Linux kernels:
 * provide support for an extended version of BPF named eBPF
 * implement a JIT compiler for BPF/eBPF
 * use BPF/eBPF for other purposes (e.g. kernel tracing).
-* surrently BPF (and *not* eBPF) is used for sandboxing (SECCOMP)
+* currently BPF (and *not* eBPF) is used for sandboxing (SECCOMP)
 
 ## cado: Capability Ambient DO (v²)
 
@@ -54,6 +54,9 @@ coprocessing.
 ## guardian\_angels (v²)
 
 ## hashaddr-vde\_dnsutils (v²)
+
+## libpam-net: pam-newnet pam-usernet (v²)
+
 
 ## libslirp (v²)
 
@@ -125,14 +128,14 @@ see:
 
 ## vdens (v²)
 
+## vdestack (v²)
+
 ## vde\_plug (v²)
 
 It's a component of VDE. It's an abstraction for the physical network plug. These can be created and
 processes using VDE can attach to them. It allows for the creation of a distributed network.
 
 The network traffic is translated in a simple bidirectional character stream between two plugs.
-
-## vdestack (v²)
 
 ## vde\_switch (v²)
 
@@ -153,6 +156,16 @@ can be managed through the use of an interactive command line prompt.
 
 ## vufuse (v²)
 
+## vuname (v²)
+
+## vunet (v²)
+
+## VUOS (v²)
+
+## vustack (v²)
+
+## vusu (v²)
+
 ## vu\_insmod (v²)
 
 It allows for the loading of a module to support some type of virtualization. Can be launched from a
@@ -171,12 +184,6 @@ See:
 
     vu_insmod
 
-## vuname (v²)
-
-## vunet (v²)
-
-## VUOS (v²)
-
 ## vu\_rmmod (v²)
 
 It allows a user of a virtualized process to unload a previously loaded module.
@@ -184,10 +191,6 @@ It allows a user of a virtualized process to unload a previously loaded module.
 See:
 
     vu_insmod
-
-## vustack (v²)
-
-## vusu (v²)
 
 ## vxvde (v²)
 
