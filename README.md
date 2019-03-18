@@ -115,7 +115,7 @@ See:
 ## unreal (v²)
 
 ## unrealuidgid (v²)
-It's a module of **VuOS**. It virtualizes the system calls involving the user identity (*getuid*, *getgid*, etc.) returning always the value 0, as happens when the super user executes them.
+It's a module of VUOS. It virtualizes the system calls involving the user identity (`getuid`, `getgid`, etc.) returning always the value 0, as happens when the super user executes them.
 
 See:
 
@@ -158,12 +158,12 @@ can be managed through the use of an interactive command line prompt.
 ## vudebug (v²)
 
 ## vudev (v²)
-It's a module of **VuOS** that allows the virtualization and management of devices in the umvu virtual environment. 
+It's a module of VUOS that allows the virtualization and management of devices in the umvu virtual environment. 
 
 ## vufs (v²)
 
 ## vufuse (v²)
-It's a module of **VuOS**. It allows the *mount* operation of **FUSE** file systems in the umvu virtual environment.
+It's a module of VUOS. It allows the `mount` operation of FUSE file systems in the umvu virtual environment.
 
 ## vu\_insmod (v²)
 
@@ -200,7 +200,7 @@ See:
 ## vustack (v²)
 
 ## vusu (v²)
-Utility that comes with the **unrealuidgid** module. It works like the *su* command, but in virtual environment.
+Utility that comes with the *unrealuidgid* module. It works like the `su` command, but in virtual environment.
 
 See:
 
