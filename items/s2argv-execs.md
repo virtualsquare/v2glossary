@@ -1,10 +1,11 @@
-## execs-s2argv (v²)
+## s2argv-execs (v²)
 
-It is a library (libexecs) providing a  group  of functions extends the family
-of exec(3) provided by the libc.
+It is a library (libexecs) providing a  group  of functions extending the 
+exec(3) family provided by the libc.
 
 execs, execse, execsp and execspe are similar to  execv(3),  execve(2),
-execvp(3) and execvpe(3), respectively, but take a command line argument string as the file to execute.
+execvp(3) and execvpe(3), respectively, but they take a command line argument 
+string as the file to execute.
 
 s2argv converts a command line string in argv format.
 

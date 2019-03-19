@@ -1,5 +1,6 @@
 ## vusu (v²)
-Utility that comes with the *unrealuidgid* module. It works like the `su` command, but in virtual environment.
+
+It works like the `su` command, but in a VUOS virtual environment.
 
 See:
 
