@@ -20,32 +20,18 @@ Recent Linux kernels:
 
 ## cado: Capability Ambient DO (v²)
 
-Cado  permits  to delegate capabilities to users.  Cado is a capability based
-sudo. Sudo allows authorized users to run programs as root (or as another
-		user),  cado allows authorized users to run programs with specific
-(ambient) capabilities
+Cado permits the delegation of capabilities to users.  Cado is a *capability 
+based* sudo. 
+Sudo allows authorized users to run programs as root (or as another
+user), cado permits authorized users to run programs with specific
+(ambient) capabilities.
 
 ## dpipe: bi-directional pipe command (v²)
 
-dpipe is a general tool to run two commands diverting the standard output  of
+dpipe is a general tool. It runs two commands diverting the standard output of
 the  first  command  into the standard input of the second and vice-versa.
 
 ## eBPF
-
-## execs-s2argv (v²)
-
-It is a library (libexecs) providing a  group  of functions extends the family
-of exec(3) provided by the libc.
-
-execs, execse, execsp and execspe are similar to  execv(3),  execve(2),
-execvp(3) and execvpe(3), respectively, but take a command line argument string as the file to execute.
-
-s2argv converts a command line string in argv format.
-
-libexecs can be used in embedded systems (it has a very low memory footprint,
-		can be used using stack allocationonly) and does not use any shell.
-Libexecs provides also a safereplacement for system(3) and tools for
-coprocessing.
 
 ## exotcp (v²)
 
@@ -70,8 +56,11 @@ coprocessing.
 
 ## netlink
 
-It's a socket family designed to configure the network in a more elegant fashion. It allows
-communication between userspace processes and kernel processes. It has been created to offer a more
+It's a socket family designed to exchange information between the kernel and
+user-space processes.
+It permits also to configure the network in a more elegant 
+and efficient way (than the previous netdevice(7)). 
+It has been created to offer a more
 versatile solution for network configuration and to be an alternative to the traditional method of
 using ioctl calls.
 
@@ -89,6 +78,22 @@ It is (partly) documented in RFC 3549.
 
 ## pycotcp (v²)
 
+## s2argv-execs (v²)
+
+It is a library (libexecs) providing a  group  of functions extending the 
+exec(3) family provided by the libc.
+
+execs, execse, execsp and execspe are similar to  execv(3),  execve(2),
+execvp(3) and execvpe(3), respectively, but they take a command line argument 
+string as the file to execute.
+
+s2argv converts a command line string in argv format.
+
+libexecs can be used in embedded systems (it has a very low memory footprint,
+		can be used using stack allocationonly) and does not use any shell.
+Libexecs provides also a safereplacement for system(3) and tools for
+coprocessing.
+
 ## scado (v²)
 
 ## slirp
@@ -101,12 +106,13 @@ It is (partly) documented in RFC 3549.
 
 ## umvu (v²)
 
-It's a user mode implementation of VUOS. It is designed to implement a partial virtual machine for
-the process it virtualizes and its offspring. The virtualized process has a virtualized view of its
-environment (in opposition to the global view that processes usually have).
+It's a user mode implementation of VUOS. It has been designed to implement a
+partial virtual machine for the process it virtualizes and its offspring. The
+virtualized process has a virtualized view of its environment (in opposition to
+		the global view that processes usually have).
 
-It allows the loading and unloading of various modules for different types of virtualization (of the
-file system, of the devices, etc.).
+It allows the loading and unloading of various modules for different types of
+virtualization (of the file system, of the devices, etc.).
 
 See:
 
@@ -115,7 +121,10 @@ See:
 ## unreal (v²)
 
 ## unrealuidgid (v²)
-It's a module of VUOS. It virtualizes the system calls involving the user identity (`getuid`, `getgid`, etc.) returning always the value 0, as happens when the super user executes them.
+
+It's a module of VUOS. It virtualizes the system calls involving the user
+identity (`getuid`, `getgid`, etc.) returning always the value 0, as happens
+when the super user executes them.
 
 See:
 
@@ -135,21 +144,26 @@ see:
 
 ## vdens (v²)
 
+## vdestack (v²)
+
 ## vde\_plug (v²)
 
-It's a component of VDE. It's an abstraction for the physical network plug. These can be created and
-processes using VDE can attach to them. It allows for the creation of a distributed network.
+It's a component of VDE. It's an abstraction for the physical network plug.
+These can be created and processes using VDE can attach to them. It allows for
+the creation of a distributed network.
 
-The network traffic is translated in a simple bidirectional character stream between two plugs.
-
-## vdestack (v²)
+The network traffic is translated in a simple bidirectional character stream
+between two plugs.
 
 ## vde\_switch (v²)
 
-It's a component of VDE. It's an abstraction for the physical switch. It allows for the creation of
-a virtual switch to which processes can connect. It supports many usual switch features (like port
-control, creation of VLANs, network filtering, etc.). The switch is created in a user directory and
-can be managed through the use of an interactive command line prompt.
+It is a component of VDE. It is the virtual counterpart of a physical switch. 
+`vde_switch` command creates a
+virtual switch. Processes (virtual machines, VUOS instances, VDE namespaces)
+can be interconneced by a `vde_switch`.	It
+supports many common switch features (like port control, creation of VLANs,
+network filtering, etc.). The switch can
+be managed through the use of an interactive command line prompt.
 
 ## volatilestream (v²)
 
@@ -158,36 +172,53 @@ can be managed through the use of an interactive command line prompt.
 ## vudebug (v²)
 
 ## vudev (v²)
-It's a module of VUOS that allows the virtualization and management of devices in the umvu virtual environment. 
+
+It's a module of VUOS that allows the virtualization and management of devices
+in the umvu virtual environment. 
 
 ## vufs (v²)
 
 ## vufuse (v²)
-It's a module of VUOS. It allows the `mount` operation of FUSE file systems in the umvu virtual environment.
 
-## vu\_insmod (v²)
-
-It allows for the loading of a module to support some type of virtualization. Can be launched from a
-process virtualized by umvu.
-
-For example, suppose you want to virtualize file system mounting. You would use, for example in a
-virtualized istance of xterm, the following command
-
-    vu_insmod vufuse
-
-## vu\_lsmod (v²)
-
-It allows the user of a virtualized process to see which modules have been loaded so far.
-
-See:
-
-    vu_insmod
+It's a module of VUOS. It allows the `mount` operation of FUSE file systems in
+the umvu virtual environment.
 
 ## vuname (v²)
 
 ## vunet (v²)
 
 ## VUOS (v²)
+
+## vustack (v²)
+
+## vusu (v²)
+
+It works like the `su` command, but in a VUOS virtual environment.
+
+See:
+
+    unrealuidgid
+
+## vu\_insmod (v²)
+
+It loads a module in a VUOS partial virtual machine to support some type of 
+virtualization.
+Can be launched from a process virtualized by umvu.
+
+For example, in a shell running inside a umvu session the following command
+
+    vu_insmod vufuse
+
+loads the vufuse module, allowing the mounting of vufuse file systems.
+
+## vu\_lsmod (v²)
+
+It allows the user of a virtualized process to see which modules have been
+loaded so far.
+
+See:
+
+    vu_insmod
 
 ## vu\_rmmod (v²)
 
@@ -196,15 +227,6 @@ It allows a user of a virtualized process to unload a previously loaded module.
 See:
 
     vu_insmod
-
-## vustack (v²)
-
-## vusu (v²)
-Utility that comes with the *unrealuidgid* module. It works like the `su` command, but in virtual environment.
-
-See:
-
-    unrealuidgid
 
 ## vxvde (v²)
 
