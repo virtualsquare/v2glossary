@@ -37,6 +37,8 @@ the  first  command  into the standard input of the second and vice-versa.
 
 ## FUSE
 
+*It is a software interface for Unix-like computer operating systems that lets non-privileged users create their own file systems without editing kernel code. This is achieved by running file system code in user space while the FUSE (Filesystem in Userspace) module provides only a "bridge" to the actual kernel interfaces.* (Wikipedia)
+
 ## guardian\_angels (v²)
 
 ## hashaddr-vde\_dnsutils (v²)
@@ -104,6 +106,11 @@ coprocessing.
 
 ## umview (v²)
 
+It is a is a View OS implementation. UMView is a partial virtual machine and userspace hypervisor capable
+of intercepting system calls and modifying their behavior according to the
+calling process' view. In order to provide flexibility and modularity UMView
+supports modules loadable at runtime using a plugin architecture.
+
 ## umvu (v²)
 
 It's a user mode implementation of VUOS. It has been designed to implement a
@@ -120,9 +127,11 @@ See:
 
 ## unreal (v²)
 
+It is a test module of VUOS. It virtualize the entire file system in `/unreal` and in `/unreal/unreal` (for second level virtualization). 
+
 ## unrealuidgid (v²)
 
-It's a module of VUOS. It virtualizes the system calls involving the user
+It is a module of VUOS. It virtualizes the system calls involving the user
 identity (`getuid`, `getgid`, etc.) returning always the value 0, as happens
 when the super user executes them.
 
@@ -173,15 +182,15 @@ be managed through the use of an interactive command line prompt.
 
 ## vudev (v²)
 
-It's a module of VUOS that allows the virtualization and management of devices
-in the umvu virtual environment. 
+It is a module of VUOS that allows the virtualization and management of devices
+in a VUOS virtual environment. 
 
 ## vufs (v²)
 
 ## vufuse (v²)
 
-It's a module of VUOS. It allows the `mount` operation of FUSE file systems in
-the umvu virtual environment.
+It is a module of VUOS. It allows the `mount` operation of FUSE file systems in
+a VUOS virtual environment.
 
 ## vuname (v²)
 
