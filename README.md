@@ -114,6 +114,13 @@ See:
 
 ## unreal (v²)
 
+## unrealuidgid (v²)
+It's a module of VUOS. It virtualizes the system calls involving the user identity (`getuid`, `getgid`, etc.) returning always the value 0, as happens when the super user executes them.
+
+See:
+
+    vusu
+
 ## userbindmount (v²)
 
 ## VDE: Virtual Distributed Ethernet (v²)
@@ -128,14 +135,14 @@ see:
 
 ## vdens (v²)
 
-## vdestack (v²)
-
 ## vde\_plug (v²)
 
 It's a component of VDE. It's an abstraction for the physical network plug. These can be created and
 processes using VDE can attach to them. It allows for the creation of a distributed network.
 
 The network traffic is translated in a simple bidirectional character stream between two plugs.
+
+## vdestack (v²)
 
 ## vde\_switch (v²)
 
@@ -151,20 +158,12 @@ can be managed through the use of an interactive command line prompt.
 ## vudebug (v²)
 
 ## vudev (v²)
+It's a module of VUOS that allows the virtualization and management of devices in the umvu virtual environment. 
 
 ## vufs (v²)
 
 ## vufuse (v²)
-
-## vuname (v²)
-
-## vunet (v²)
-
-## VUOS (v²)
-
-## vustack (v²)
-
-## vusu (v²)
+It's a module of VUOS. It allows the `mount` operation of FUSE file systems in the umvu virtual environment.
 
 ## vu\_insmod (v²)
 
@@ -184,6 +183,12 @@ See:
 
     vu_insmod
 
+## vuname (v²)
+
+## vunet (v²)
+
+## VUOS (v²)
+
 ## vu\_rmmod (v²)
 
 It allows a user of a virtualized process to unload a previously loaded module.
@@ -191,6 +196,15 @@ It allows a user of a virtualized process to unload a previously loaded module.
 See:
 
     vu_insmod
+
+## vustack (v²)
+
+## vusu (v²)
+Utility that comes with the *unrealuidgid* module. It works like the `su` command, but in virtual environment.
+
+See:
+
+    unrealuidgid
 
 ## vxvde (v²)
 
