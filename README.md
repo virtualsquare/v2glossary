@@ -120,6 +120,26 @@ It is (partly) documented in RFC 3549.
 
 ## purelibc (v²)
 
+It is a glibc overlay library for process self-virtualization. Purelibc basically converts glibc
+from a libc+system interfacing library into a libc-only library. To do that it uses the so called
+"LD\_PRELOAD trick": using the LD\_PRELOAD environment variable the user can specify a shared object
+that will be loaded before any other, including the C runtine (libc.so). With Purelibc a user can
+define a function that will intercept all the system calls and execute user defined code. This way
+processes can virtualize their own system calls.
+
+It is used in vuos to implement virtualization efficiently: the additional cost of the
+virtualization is that of a function call. This way umvu can have an efficient implementation of
+module nesting.
+
+<!-- If you want to use a Markdown to HTML conversion tool be sure to remove this comment. The
+method of using LD_PRELOAD has been referenced as the "LD_PRELOAD trick" in this stack overflow
+question, which references a discussion on a subreddit called "proggit":
+https://stackoverflow.com/questions/426230/what-is-the-ld-preload-trick . It has also been
+referenced with that name in this blog post:
+http://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/
+) -->
+
+
 ## pycotcp (v²)
 
 ## s2argv-execs (v²)
@@ -148,6 +168,17 @@ a general purpose TCP/IP emulator. No configuration is required on the guest sid
 services are required on the host side.
 
 ## strcase (v²)
+
+It is a library that implements a multiway branch (switch) for short string in C.
+
+It was created to allow the programmer to write switch with strings for the cases instead of
+integer, as using a chain of if-then-else statements can often be too cumbersome.
+
+It works for short strings (8 char max) and the case strings are specified one letter at a time with
+commas in between as arguments of the STRCASE macro. The guard of the switch statement is passed as
+an argument to the strcase funtion.
+
+The whole library is contained in one header file.
 
 ## stropt (v²)
 
