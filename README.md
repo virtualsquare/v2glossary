@@ -35,6 +35,16 @@ the  first  command  into the standard input of the second and vice-versa.
 
 ## exotcp (v²)
 
+ExoTCP is a minimal userspace network stack that has been optimized for traffic based on the
+HTTP protocol.
+
+Since the only traffic the stack needs to handle is HTTP traffic only a subset of the components of
+a full generic network stack have been implemented in ExoTCP. Furthermore ExoTCP does not use a
+layer architecture, and this reduces the overhead needed to handle packets. Finally it's a zero copy
+stack: packets are read and written directly to/from NIC rings.
+
+It is based on the Netmap framework.
+
 ## FUSE
 
 *It is a software interface for Unix-like computer operating systems that lets non-privileged users create their own file systems without editing kernel code. This is achieved by running file system code in user space while the FUSE (Filesystem in Userspace) module provides only a "bridge" to the actual kernel interfaces.* (Wikipedia)
@@ -48,13 +58,45 @@ the  first  command  into the standard input of the second and vice-versa.
 
 ## libslirp (v²)
 
+It is a wrapper for slirp that makes its code available in a library with a clean and simple
+interface.
+
+See `slirp` for more details.
+
 ## libvdeplug (v²)
 
+It is a library to connect to a VDE switch. The interface of the library is based on 6 functions:
+1. `vde_open`, to open a VDE connection
+2. `vde_recv`, to receive data from a VDE connection
+3. `vde_send`, to send data in a VDE connection
+4. `vde_datafd`, to poll for new packets
+5. `vde_ctlfd`, to poll for the connection closing
+6. `vde_close`, to close a VDE connection
+
+A VDE connection is represented with a VDECONN object, which keeps the connection's information and
+is used as an argument in all the functions of the interface.
+
 ## lwipv6 (v²)
+
+It is an IPv4/IPv6 hybrid stack with an architecture based on the logical model called "one process
+for message": every network protocol is represented by an API and a single process moves the packets
+through the stacks calling the methods of the APIs of the involved protocols.
+
+It is based on the LwIP stack, which was designed for embedded systems with reduced hardware and
+software resources. LwIPv6 has been designed to be used as a virtualization tool for userspace
+programs.
 
 ## N2N
 
 ## namespace
+
+*A namespace wraps a global system resource in an abstraction that makes it appear to the processes
+within the namespaces that they have their own isolated instance of the global resource. Changes to
+the global resource are visible to other processes that are members of the namespace, but are
+invisible to other processes.* (Linux Programmer's Manual)
+
+Namespaces are used to implement containers, virtual networks, virtual mount points, virtual PIDs,
+virtual users, and so on. Namespaces have been a feature of Linux kernel since version 2.4.19.
 
 ## netlink
 
@@ -78,6 +120,26 @@ It is (partly) documented in RFC 3549.
 
 ## purelibc (v²)
 
+It is a glibc overlay library for process self-virtualization. Purelibc basically converts glibc
+from a libc+system interfacing library into a libc-only library. To do that it uses the so called
+"LD\_PRELOAD trick": using the LD\_PRELOAD environment variable the user can specify a shared object
+that will be loaded before any other, including the C runtine (libc.so). With Purelibc a user can
+define a function that will intercept all the system calls and execute user defined code. This way
+processes can virtualize their own system calls.
+
+It is used in vuos to implement virtualization efficiently: the additional cost of the
+virtualization is that of a function call. This way umvu can have an efficient implementation of
+module nesting.
+
+<!-- If you want to use a Markdown to HTML conversion tool be sure to remove this comment. The
+method of using LD_PRELOAD has been referenced as the "LD_PRELOAD trick" in this stack overflow
+question, which references a discussion on a subreddit called "proggit":
+https://stackoverflow.com/questions/426230/what-is-the-ld-preload-trick . It has also been
+referenced with that name in this blog post:
+http://www.goldsborough.me/c/low-level/kernel/2016/08/29/16-48-53-the_-ld_preload-_trick/
+) -->
+
+
 ## pycotcp (v²)
 
 ## s2argv-execs (v²)
@@ -100,7 +162,23 @@ coprocessing.
 
 ## slirp
 
+It is a program that emulates a PPP, SLIP or CSLIP connection to Internet via a shell account. It
+is widely used by virtual machine hypervisors to provide virtual networking services. It can work as
+a general purpose TCP/IP emulator. No configuration is required on the guest side and no privileged
+services are required on the host side.
+
 ## strcase (v²)
+
+It is a library that implements a multiway branch (switch) for short string in C.
+
+It was created to allow the programmer to write switch with strings for the cases instead of
+integer, as using a chain of if-then-else statements can often be too cumbersome.
+
+It works for short strings (8 char max) and the case strings are specified one letter at a time with
+commas in between as arguments of the STRCASE macro. The guard of the switch statement is passed as
+an argument to the strcase funtion.
+
+The whole library is contained in one header file.
 
 ## stropt (v²)
 
@@ -153,8 +231,6 @@ see:
 
 ## vdens (v²)
 
-## vdestack (v²)
-
 ## vde\_plug (v²)
 
 It's a component of VDE. It's an abstraction for the physical network plug.
@@ -163,6 +239,8 @@ the creation of a distributed network.
 
 The network traffic is translated in a simple bidirectional character stream
 between two plugs.
+
+## vdestack (v²)
 
 ## vde\_switch (v²)
 
@@ -192,22 +270,6 @@ in a VUOS virtual environment.
 It is a module of VUOS. It allows the `mount` operation of FUSE file systems in
 a VUOS virtual environment.
 
-## vuname (v²)
-
-## vunet (v²)
-
-## VUOS (v²)
-
-## vustack (v²)
-
-## vusu (v²)
-
-It works like the `su` command, but in a VUOS virtual environment.
-
-See:
-
-    unrealuidgid
-
 ## vu\_insmod (v²)
 
 It loads a module in a VUOS partial virtual machine to support some type of 
@@ -229,6 +291,12 @@ See:
 
     vu_insmod
 
+## vuname (v²)
+
+## vunet (v²)
+
+## VUOS (v²)
+
 ## vu\_rmmod (v²)
 
 It allows a user of a virtualized process to unload a previously loaded module.
@@ -236,6 +304,16 @@ It allows a user of a virtualized process to unload a previously loaded module.
 See:
 
     vu_insmod
+
+## vustack (v²)
+
+## vusu (v²)
+
+It works like the `su` command, but in a VUOS virtual environment.
+
+See:
+
+    unrealuidgid
 
 ## vxvde (v²)
 
@@ -257,3 +335,20 @@ See also:
     vxvde
 
 ## wirefilter (v²)
+
+It is a program that simulates a network link with problems or limitation in a VDE network. For
+example it may simulate a given delay in packet transmission or a specified drop rate for packets on
+the link, with many options to choose from. It is very useful for testing purposes and simulations.
+One of the most interesting use of this tool has been the test of protocols for transmissions with
+long RTT, like the ones between Earth and probes on Mars.
+
+The following coomand inserts a wirefilter into a bi-directional pipeline between two vde\_plugs that
+interconnect two vde\_switches:
+```bash
+    $ dpipe vde_plug /tmp/vde1.ctl = wirefilter -M /tmp/wiremgmt = vde_plug /tmp/vde2.ctl
+```
+
+The following command then opens an interactive prompt to insert anomalies into the network
+```bash
+    $ vdeterm /tmp/wiremgmt
+```
