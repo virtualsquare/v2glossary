@@ -274,6 +274,8 @@ see:
 
 ## vdens (v²)
 
+## vdestack (v²)
+
 ## vde\_plug (v²)
 
 It's a component of VDE. It's an abstraction for the physical network plug.
@@ -282,8 +284,6 @@ the creation of a distributed network.
 
 The network traffic is translated in a simple bidirectional character stream
 between two plugs.
-
-## vdestack (v²)
 
 ## vde\_switch (v²)
 
@@ -313,6 +313,22 @@ in a VUOS virtual environment.
 It is a module of VUOS. It allows the `mount` operation of FUSE file systems in
 a VUOS virtual environment.
 
+## vuname (v²)
+
+## vunet (v²)
+
+## VUOS (v²)
+
+## vustack (v²)
+
+## vusu (v²)
+
+It works like the `su` command, but in a VUOS virtual environment.
+
+See:
+
+    unrealuidgid
+
 ## vu\_insmod (v²)
 
 It loads a module in a VUOS partial virtual machine to support some type of 
@@ -334,12 +350,6 @@ See:
 
     vu_insmod
 
-## vuname (v²)
-
-## vunet (v²)
-
-## VUOS (v²)
-
 ## vu\_rmmod (v²)
 
 It allows a user of a virtualized process to unload a previously loaded module.
@@ -347,16 +357,6 @@ It allows a user of a virtualized process to unload a previously loaded module.
 See:
 
     vu_insmod
-
-## vustack (v²)
-
-## vusu (v²)
-
-It works like the `su` command, but in a VUOS virtual environment.
-
-See:
-
-    unrealuidgid
 
 ## vxvde (v²)
 
