@@ -51,6 +51,21 @@ It is based on the Netmap framework.
 
 ## guardian\_angels (v²)
 
+The "guardian angels" is a metaphor for the method with which vuos handles hypervisors.
+
+Conceptually, every virtualized process has its own hypervisor, a "guardian angel". To implement
+this, each time a process `p` creates a new process `q` the hypervisor of `p` creates a new
+hypervisor for `q`. This way the hypervisors of `p` and `q` are separate, so that if `q` needs to do
+a blocking system call `p` is not blocked as well.
+
+The idea is as follows: when a traced process `p` creates a process `q` the hypervisor of `p` will,
+eventually, detect an event from `q`, typically a `brk` syscall. At this point, the hypervisor of
+`p` saves the registers and the syscall of `q`, injects a blocking call (poll(0,0,-1)) into `q` and
+resumes it. This way, `q` will block right after resuming. Now, the hypervisor of `p` will detach
+from `q` and create a new thread that will become the hypervisor of `q`. This thread will attach to
+`q` and inject back the original system call, with the original registers, into `q` before resuming
+it.
+
 ## hashaddr-vde\_dnsutils (v²)
 
 ## libpam-net: pam-newnet pam-usernet (v²)
@@ -117,6 +132,23 @@ It is (partly) documented in RFC 3549.
 ## picotcp
 
 ## play\_it\_again\_sam (v²)
+
+`Play_it_again_sam` is a mechanism used by `vuos` that allows the hypervisor to make more than one
+"real" system call in the virtualization of a single system call. It's a reference to the movie
+"Casablanca".
+
+It works like this: under normal circumstances, the hypervisor is a ptrace tracer for the
+virtualized processes. When a virtualized process `p` makes a syscall `s` the hypervisor stops
+waiting and can examine the status to handle the event that occurred. After the hypervisor has done
+its job in virtualizing the system call and is ready to resume the virtualized process, it can set a
+`syscall action`. It will then resume the virtualized process.
+
+One of the possible action is `DO_IT_AGAIN`. If the hypervisor is signaled at the exit of `s`
+and the action is `DO_IT_AGAIN`, the hypervisor will set the PC of `p` one instruction back and
+inject the modified PC into the `p`'s registers.  This way `p`, after being resumed, will make
+the same system call `s` and the hypervisor will be signaled again, so that it can make the other
+needed "real" syscalls in the virtualization of `s`. This loop may continue as
+many times as needed.
 
 ## purelibc (v²)
 
@@ -218,6 +250,17 @@ See:
     vusu
 
 ## userbindmount (v²)
+
+It is a utility based on the libuserbindmount library, which provides support for bind mount in
+user namespaces. If the operation is not permitted in the current namespace a new user namespace is
+created.
+
+For example, the command
+```bash
+    userbindmount /tmp/resolv.conf /etc/resolv.conf
+```
+mounts `/tmp/resolv.conf` instead of `/etc/resolv.conf`. This way we can redefine the name servers for
+name resolution. Every access to `/etc/resolv.conf` will actually be an access to `/tmp/resolv.conf`
 
 ## VDE: Virtual Distributed Ethernet (v²)
 
